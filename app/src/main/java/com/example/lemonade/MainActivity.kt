@@ -34,21 +34,6 @@ class MainActivity : AppCompatActivity() {
      * Anything labeled var instead of val is expected to be changed in the functions but DO NOT
      * alter their initial values declared here, this could cause the app to not function properly.
      */
-    private val LEMONADE_STATE = "LEMONADE_STATE"
-    private val LEMON_SIZE = "LEMON_SIZE"
-    private val SQUEEZE_COUNT = "SQUEEZE_COUNT"
-
-    // SELECT represents the "pick lemon" state
-    private val SELECT = "select"
-
-    // SQUEEZE represents the "squeeze lemon" state
-    private val SQUEEZE = "squeeze"
-
-    // DRINK represents the "drink lemonade" state
-    private val DRINK = "drink"
-
-    // RESTART represents the state where the lemonade has been drunk and the glass is empty
-    private val RESTART = "restart"
 
     // Default the state to select
     private var lemonadeState = "select"
@@ -208,6 +193,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun pick(): Int {
         return (2..4).random()
+    }
+    companion object {
+        private val LEMONADE_STATE = "LEMONADE_STATE"
+        private val LEMON_SIZE = "LEMON_SIZE"
+        private val SQUEEZE_COUNT = "SQUEEZE_COUNT"
+
+        // SELECT represents the "pick lemon" state
+        private val SELECT = "select"
+
+        // SQUEEZE represents the "squeeze lemon" state
+        private val SQUEEZE = "squeeze"
+
+        // DRINK represents the "drink lemonade" state
+        private val DRINK = "drink"
+
+        // RESTART represents the state where the lemonade has been drunk and the glass is empty
+        private val RESTART = "restart"
     }
 }
 
