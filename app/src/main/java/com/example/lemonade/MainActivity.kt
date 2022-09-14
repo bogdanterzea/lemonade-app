@@ -122,21 +122,28 @@ class MainActivity : AppCompatActivity() {
 
         // TODO: lastly, before the function terminates we need to set the view elements so that the
         //  UI can reflect the correct state
-        if (lemonadeState == SQUEEZE) {
-            if (lemonSize > 0) {
-                squeezeCount++
-                lemonSize = -1
-            } else if (lemonSize <= 0) {
-                changeLemonState(DRINK)
+
+        when (lemonadeState) {
+            SELECT -> {
+                changeLemonState(SQUEEZE)
+                lemonSize = pick()
+                squeezeCount = 0
             }
-        } else if (lemonadeState == DRINK) {
-            changeLemonState(RESTART)
-        } else if (lemonadeState == RESTART) {
-            changeLemonState(SELECT)
-        } else if (lemonadeState == SELECT) {
-            changeLemonState(SQUEEZE)
-            lemonSize = pick()
-            squeezeCount = 0
+            SQUEEZE -> {
+                if (lemonSize > 0) {
+                    squeezeCount++
+                    lemonSize = -1
+                } else if (lemonSize <= 0) {
+                    changeLemonState(DRINK)
+                }
+            }
+            DRINK -> {
+                changeLemonState(RESTART)
+            }
+            RESTART -> {
+                changeLemonState(SELECT)
+            }
+
         }
     }
 
